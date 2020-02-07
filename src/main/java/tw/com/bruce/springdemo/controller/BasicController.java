@@ -42,6 +42,7 @@ public class BasicController {
      * @Description: 測試單點是否錯誤.
      * @return: reactor.core.publisher.Mono<java.lang.String>
      */
+    @GetMapping("")
     public Mono<String> heath() {
         return Mono.just("Hello project");
     }
@@ -50,7 +51,7 @@ public class BasicController {
      * @Description: api 回傳 user list.
      * @return: reactor.core.publisher.Flux<tw.com.bruce.springdemo.entity.UserEntity>
      */
-    @GetMapping("")
+    @GetMapping("/list")
     public Flux<UserEntity> list() {
         return this.handler.list();
     }
@@ -70,7 +71,7 @@ public class BasicController {
      * @Param: [user]
      * @return: reactor.core.publisher.Mono<tw.com.bruce.springdemo.entity.UserEntity>
      */
-    @PostMapping("")
+    @PostMapping("/crate")
     public Mono<UserEntity> create(@RequestBody final UserEntity user) {
         return this.handler.createOrUpdate(user);
     }

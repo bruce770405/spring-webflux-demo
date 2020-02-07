@@ -1,26 +1,45 @@
-package tw.com.bruce.springdemo;
+package tw.com.bruce.springdemo.controller;
 
+import org.junit.Test;
 import org.springframework.http.MediaType;
-import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
 import tw.com.bruce.springdemo.entity.UserEntity;
 
 /**
- * client 測試
+ * 測試 controller 狀況
  *
  * @author: BruceHsu
  * @version: 2019-04-21
  * @see
  */
-public class RESTClient {
+public class BasicControllerTest {
+
+    private final WebTestClient client = WebTestClient.bindToServer().baseUrl("http://localhost:8080").build();
+
+    @Test
+    public void testCreateUser() throws Exception {
+        final UserEntity user = new UserEntity();
+        user.setUserName("bruce");
+        user.setMail("test@example.org");
+        WebTestClient.BodyContentSpec spec = client.post().uri("/basic")
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(Mono.just(user), UserEntity.class)
+                .exchange()
+                .expectStatus()
+                .isOk()
+                .expectBody().jsonPath("userName").isEqualTo("bruce");
+    }
 
     /**
      * 調用createdUser.block 方法的作用是等待請求完成並得到所產生的類User 的對象。
+     *
      * @Description: test.
      * @Param: [args]
      * @return: void
      */
-    public static void main(final String[] args) {
+    @Test
+    public void testBasic(final String[] args) {
 
         UserEntity user = new UserEntity();
         user.setId("1");
@@ -37,5 +56,4 @@ public class RESTClient {
 
         System.out.println(createdUser.block());
     }
-
 }

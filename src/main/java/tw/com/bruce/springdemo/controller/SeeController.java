@@ -18,19 +18,13 @@ import java.util.concurrent.ThreadLocalRandom;
  * @see
  */
 @RestController
-@RequestMapping("/sse")
+@RequestMapping("/see")
 public class SeeController {
 
     /**
-     * Duration的內部實現與Instant類似，也是包含兩部分：seconds表示秒，nanos表示納秒。
-     * 兩者的區別是
-     * Instant用於表示一個時間戳（或者說是一個時間點），
-     * 而Duration表示一個時間段，
-     * 所以Duration類中不包含now()靜態方法。可以通過Duration.between()方法創建
-     *
      * @Description:
      * @Param: []
-     * @return: reactor.core.publisher.Flux<org.springframework.http.codec.ServerSentEvent   <   java.lang.Integer>>
+     * @return: reactor.core.publisher.Flux<org.springframework.http.codec.ServerSentEvent < java.lang.Integer>>
      */
     @GetMapping("/randomNumbers")
     public Flux<ServerSentEvent<Integer>> randomNumbers() {
