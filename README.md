@@ -2,6 +2,6 @@
 
 reactor web flux
 
-## Use Tech
+## Use echnology
 * SpringBoot WebFlux
 * Java 8
