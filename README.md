@@ -1,8 +1,8 @@
 # Spring Reactive Demo
 
-reactor web flux
+reactor web flux 
 
 ## Use echnology
-* SpringBoot WebFlux
+* SpringBoot WebFlux https://projectreactor.io/
 * Java 8
 * Maven
