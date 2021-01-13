@@ -7,6 +7,7 @@ import tw.com.bruce.springdemo.entity.UserEntity;
 import tw.com.bruce.springdemo.handler.BasicHandler;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -19,7 +20,9 @@ import java.util.concurrent.ConcurrentHashMap;
 @Service(value = "BasicService")
 public class BasicHandlerImpl implements BasicHandler {
 
-    /** demo db user data. */
+    /**
+     * demo db user data.
+     */
     private final Map<String, UserEntity> data = new ConcurrentHashMap<>();
 
     /**
@@ -53,11 +56,11 @@ public class BasicHandlerImpl implements BasicHandler {
 
     @Override
     public Mono<UserEntity> createOrUpdate(UserEntity user) {
-        return null;
+        return Mono.defer(() -> Mono.just(Objects.requireNonNull(this.data.put(user.getId(), user))));
     }
 
     @Override
     public Mono<UserEntity> delete(String id) {
-        return null;
+        return Mono.defer(() -> Mono.just(this.data.remove(id)));
     }
 }

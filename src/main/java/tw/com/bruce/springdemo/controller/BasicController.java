@@ -1,9 +1,7 @@
 
 package tw.com.bruce.springdemo.controller;
 
-import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -27,15 +25,6 @@ public class BasicController {
     @Autowired
     public BasicController(final BasicHandler handler) {
         this.handler = handler;
-    }
-
-    /**
-     * @Description:
-     * @return: void
-     */
-    @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "Resource not found")
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public void notFound() {
     }
 
     /**
@@ -71,7 +60,7 @@ public class BasicController {
      * @Param: [user]
      * @return: reactor.core.publisher.Mono<tw.com.bruce.springdemo.entity.UserEntity>
      */
-    @PostMapping("/crate")
+    @PostMapping("/create")
     public Mono<UserEntity> create(@RequestBody final UserEntity user) {
         return this.handler.createOrUpdate(user);
     }
