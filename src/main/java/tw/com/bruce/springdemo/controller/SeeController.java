@@ -13,8 +13,8 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * 服務器推播事件（Server-Sent Events，SSE）controller
  *
- * @author: BruceHsu
- * @version: 2019-04-21
+ * @author BruceHsu
+ * @version 2019-04-21
  * @see
  */
 @RestController

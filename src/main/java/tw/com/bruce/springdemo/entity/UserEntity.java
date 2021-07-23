@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 /**
  * User 資料 實體.
+ * TODO 尚未引入 jdbc
  *
  * @author: BruceHsu
  * @version: 2019-04-21

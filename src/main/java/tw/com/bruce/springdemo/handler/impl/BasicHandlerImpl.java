@@ -13,8 +13,8 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * basic handler impl
  *
- * @author: BruceHsu
- * @version: 2019-04-21
+ * @author BruceHsu
+ * @version 2019-04-21
  * @see
  */
 @Service(value = "BasicService")
@@ -26,8 +26,8 @@ public class BasicHandlerImpl implements BasicHandler {
     private final Map<String, UserEntity> data = new ConcurrentHashMap<>();
 
     /**
-     * @Description: 收集data內的user entity 資料 flux.
-     * @return: reactor.core.publisher.Flux<tw.com.bruce.springdemo.entity.UserEntity>
+     * 收集data內的user entity 資料 flux.
+     * @return
      */
     @Override
     public Flux<UserEntity> list() {
@@ -35,9 +35,9 @@ public class BasicHandlerImpl implements BasicHandler {
     }
 
     /**
-     * @Description: 尋找flux內傳入的所有id, 對應的userEntity包成flux往下流.
-     * @Param: [ids] flux ids.
-     * @return: reactor.core.publisher.Flux<tw.com.bruce.springdemo.entity.UserEntity>
+     * 尋找flux內傳入的所有id, 對應的userEntity包成flux往下流.
+     * @param ids
+     * @return
      */
     @Override
     public Flux<UserEntity> getById(Flux<String> ids) {
@@ -45,9 +45,9 @@ public class BasicHandlerImpl implements BasicHandler {
     }
 
     /**
-     * @Description: 尋找單一id是否有user資料
-     * @Param: [id] the userId.
-     * @return: reactor.core.publisher.Mono<tw.com.bruce.springdemo.entity.UserEntity>
+     * 尋找單一id是否有user資料
+     * @param id
+     * @return
      */
     @Override
     public Mono<UserEntity> getById(String id) {
